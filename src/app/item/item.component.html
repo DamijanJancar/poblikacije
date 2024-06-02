@@ -1,0 +1,16 @@
+<h1 mat-dialog-title><strong>Naslov:</strong> {{ data.naslov }}</h1>
+<div mat-dialog-content>
+  <p><strong>Avtor:</strong> {{ data.avtor }}</p>
+  <p><strong>Leto:</strong> {{ data.leto }}</p>
+  <p><strong>Oblika:</strong> {{ data.oblika }}</p>
+  <p><strong>Opis:</strong> {{ data.opis }}</p>
+  <p><strong>Lastnik:</strong> {{ data.lastnik }}</p>
+  <img [src]="data.slika" alt="{{ data.naslov }}" class="dialog-image">
+  <p><strong>Podrobnosti:</strong> {{ data.podrobnosti }}</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-stroked-button mat-dialog-close>Zapri</button>
+</div>
+
+
+  

@@ -1,0 +1,96 @@
+<h1>Dodaj novo publikacijo</h1><br>
+<table class="newTable">
+    <tr>
+        <td>
+            <mat-form-field [style.width.px]=400>
+                <mat-label>Naslov</mat-label>
+                <input matInput [(ngModel)]="Naslov">
+            </mat-form-field>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <mat-form-field [style.width.px]=400>
+                <mat-label>Avtor</mat-label>
+                <input matInput [(ngModel)]="Avtor">
+            </mat-form-field>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <mat-form-field [style.width.px]=400>
+                <mat-label>Leto</mat-label>
+                <input matInput [(ngModel)]="Leto">
+            </mat-form-field>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <mat-form-field [style.width.px]=400>
+                <mat-label>Oblika</mat-label>
+                <mat-select disableRipple [(ngModel)]="Oblika">
+                    <mat-option value="Knjiga">Knjiga</mat-option>
+                    <mat-option value="Zemljevid">Zemljevid</mat-option>
+                    <mat-option value="Listina">Listina</mat-option>
+                    <mat-option value="Drugo">Drugo</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <mat-form-field [style.width.px]=400>
+                <mat-label>Opis</mat-label>
+                <input matInput [(ngModel)]="Opis">
+            </mat-form-field>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <mat-form-field [style.width.px]=400>
+                <mat-label>Lastnik</mat-label>
+                <input matInput [(ngModel)]="Lastnik">
+            </mat-form-field>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <mat-form-field [style.width.px]=400>
+                <mat-label>Podrobnosti</mat-label>
+                <input matInput [(ngModel)]="Podrobnosti">
+            </mat-form-field>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <!--<button type="button" mat-raised-button (click)="fileInput.click()">Izberi datoteko za sliko</button>
+            <input (change)="onFileSelected($event)" #fileInput type="file" id="img_upload" name="img"
+                accept="image/*">
+            -->
+            <div class="upload-container">
+
+
+                <button mat-raised-button color="primary" (click)="fileInput.click()">Izberi sliko</button>
+                <input type="file" id="file" (change)="onFileSelected($event)" #fileInput style="display: none;" />
+
+                <button mat-raised-button color="primary" (click)="onUpload()" [disabled]="isLoading">Naloži sliko</button>
+
+                
+                <div *ngIf="fileName">Izbrana datoteka: {{ fileName }}</div>
+
+                <div *ngIf="isLoading">Nalagam...</div>
+
+                <div *ngIf="imageUrl">
+                    <p>Slika uspešno naložena:</p>
+                    <a [href]="imageUrl" target="_blank">{{ imageUrl }}</a>
+                    <br>
+                    <img [src]="imageUrl" alt="Uploaded Image" class="uploaded-image" />
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+<br>
+
+<button type="submit" mat-raised-button color="primary" (click)="NewItem()" class="button">Dodaj publikacijo</button>
