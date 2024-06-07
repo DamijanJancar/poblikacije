@@ -19,7 +19,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class HomeComponent {
   public podatki!: any[]
   public columns: string[] = ['naslov', 'avtor', 'leto', 'oblika', 'opis', 'lastnik', 'slika', 'podrobnosti'];
-
+  public filteredItems: any[] = [];
+  public filter: string = '';
 
 
 
@@ -42,11 +43,23 @@ export class HomeComponent {
   GetPodatki(): void {
     this.dataService.getData().subscribe((data) => {
       console.log(data);
-      this.podatki = data
+      this.podatki = data;
+      this.applyFilter();
     });
   }
 
+  applyFilter() {
+    if (this.filter) {
+      this.filteredItems = this.podatki.filter(item => item.oblika === this.filter);
+    } else {
+      this.filteredItems = this.podatki;
+    }
+  }
 
+  setFilter(filter: string) {
+    this.filter = filter;
+    this.applyFilter();
+  }
   podrobnosti(id: number) {
     const podatek = this.podatki.find(p => p.id === id);
     this.dialog.open(ItemComponent, {

@@ -1,5 +1,21 @@
+
+
+<div>
+  <mat-form-field appearance="fill">
+    <mat-label>Izberite obliko</mat-label>
+    <mat-select [(value)]="filter" (selectionChange)="applyFilter()">
+      <mat-option value="">Vse oblike</mat-option>
+      <mat-option value="Knjiga">Knjiga</mat-option>
+      <mat-option value="Zemljevid">Zemljevid</mat-option>
+      <mat-option value="Listina">Listina</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+
+
 <div class="card-container">
-  <mat-card *ngFor="let podatek of podatki" class="example-card" color="primary">
+  <mat-card *ngFor="let podatek of filteredItems" class="example-card" color="primary">
     <mat-card-header>
       <mat-card-title>{{ podatek.naslov }}</mat-card-title>
       <mat-card-subtitle>{{ podatek.avtor }}</mat-card-subtitle>
